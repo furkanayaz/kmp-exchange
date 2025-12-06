@@ -6,7 +6,7 @@ import org.ayaz.messenger.data.entities.user.UserEntity
 import org.ayaz.messenger.data.dto_s.auth.LoginReqDTO
 import org.ayaz.messenger.domain.util.encryption.PasswordEncryption
 import org.ayaz.messenger.domain.util.Resource
-import org.koin.core.annotation.Singleton
+import org.koin.core.annotation.Single
 import org.litote.kmongo.eq
 import org.litote.kmongo.findOne
 
@@ -14,7 +14,7 @@ fun interface ILoginRepo {
     suspend fun login(req: LoginReqDTO): Resource<Boolean>
 }
 
-@Singleton
+@Single
 class LoginRepo(
     private val collection: MongoCollection<UserEntity>,
     private val passwordEncryption: PasswordEncryption

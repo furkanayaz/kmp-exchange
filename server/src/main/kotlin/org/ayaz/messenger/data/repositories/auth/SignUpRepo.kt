@@ -6,13 +6,13 @@ import org.ayaz.messenger.data.entities.user.UserEntity
 import org.ayaz.messenger.data.dto_s.auth.SignUpReqDTO
 import org.ayaz.messenger.domain.util.encryption.PasswordEncryption
 import org.ayaz.messenger.domain.util.Resource
-import org.koin.core.annotation.Singleton
+import org.koin.core.annotation.Single
 
 fun interface ISignUpRepo {
     fun signUp(req: SignUpReqDTO): Resource<Boolean>
 }
 
-@Singleton
+@Single
 class SignUpRepo(
     private val collection: MongoCollection<UserEntity>,
     private val passwordEncryption: PasswordEncryption

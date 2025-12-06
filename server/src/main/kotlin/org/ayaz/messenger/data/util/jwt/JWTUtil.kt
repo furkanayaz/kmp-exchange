@@ -5,11 +5,11 @@ import com.auth0.jwt.JWTVerifier
 import com.auth0.jwt.algorithms.Algorithm
 import io.ktor.server.auth.jwt.JWTCredential
 import io.ktor.server.auth.jwt.JWTPrincipal
-import org.koin.core.annotation.Singleton
+import org.koin.core.annotation.Single
 import java.util.Date
 import kotlin.time.ExperimentalTime
 
-@Singleton
+@Single
 class JWTUtil {
     private companion object {
         const val EMAIL = "email"

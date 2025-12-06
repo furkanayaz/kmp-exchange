@@ -1,11 +1,11 @@
 package org.ayaz.messenger.domain.util.encryption
 
-import org.koin.core.annotation.Singleton
+import org.koin.core.annotation.Single
 import java.security.MessageDigest
 import kotlin.uuid.ExperimentalUuidApi
 import kotlin.uuid.Uuid
 
-@Singleton
+@Single
 class PasswordEncryption {
     private companion object {
         const val ALGORITHM = "SHA-256"

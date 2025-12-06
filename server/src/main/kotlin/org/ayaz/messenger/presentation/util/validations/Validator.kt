@@ -3,9 +3,9 @@ package org.ayaz.messenger.presentation.util.validations
 import jakarta.validation.ConstraintViolationException
 import jakarta.validation.Validation
 import jakarta.validation.Validator
-import org.koin.core.annotation.Singleton
+import org.koin.core.annotation.Single
 
-@Singleton
+@Single
 class Validator {
     private lateinit var validator: Validator
 
