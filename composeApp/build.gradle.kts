@@ -70,6 +70,8 @@ kotlin {
             implementation(libs.androidx.lifecycle.viewmodel)
             implementation(libs.androidx.lifecycle.runtimeCompose)
             implementation(projects.shared)
+            implementation(libs.kotlinx.datetime)
+            implementation(libs.kotest.assertions.core)
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
@@ -82,11 +84,11 @@ kotlin {
 }
 
 android {
-    namespace = "org.ayaz.messengerkmp"
+    namespace = "org.ayaz.chatter"
     compileSdk = libs.versions.android.compileSdk.get().toInt()
 
     defaultConfig {
-        applicationId = "org.ayaz.messengerkmp"
+        applicationId = "org.ayaz.chatter"
         minSdk = libs.versions.android.minSdk.get().toInt()
         targetSdk = libs.versions.android.targetSdk.get().toInt()
         versionCode = 1
@@ -114,11 +116,11 @@ dependencies {
 
 compose.desktop {
     application {
-        mainClass = "org.ayaz.messengerkmp.MainKt"
+        mainClass = "org.ayaz.chatter.MainKt"
 
         nativeDistributions {
             targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
-            packageName = "org.ayaz.messengerkmp"
+            packageName = "org.ayaz.chatter"
             packageVersion = "1.0.0"
         }
     }

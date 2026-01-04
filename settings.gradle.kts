@@ -1,4 +1,5 @@
-rootProject.name = "MessengerKMP"
+@file:Suppress("UnstableApiUsage")
+rootProject.name = "Chatter"
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
 pluginManagement {

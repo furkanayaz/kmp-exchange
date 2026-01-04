@@ -50,7 +50,7 @@ kotlin {
 }
 
 android {
-    namespace = "org.ayaz.messengerkmp.shared"
+    namespace = "org.ayaz.chatter.shared"
     compileSdk = libs.versions.android.compileSdk.get().toInt()
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
