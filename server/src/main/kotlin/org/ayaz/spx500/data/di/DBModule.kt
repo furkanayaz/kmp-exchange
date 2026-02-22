@@ -17,7 +17,7 @@ class DBModule {
         const val CONN_URL = "mongodb://localhost:27017"
         const val DB_NAME = "SPX500"
 
-        const val USERS_COLLECTION = "Users"
+        const val USERS_COLLECTION = "SPX500"
     }
 
     @Single
