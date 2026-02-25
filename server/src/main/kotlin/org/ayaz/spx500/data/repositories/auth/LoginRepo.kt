@@ -26,7 +26,7 @@ class LoginRepo(
     }
 
     override suspend fun login(req: LoginReqDTO): Resource<UserModel> {
-        val userSaltValue = collection.findOne(UserEntity::email eq req.email)?.salt ?: return Resource.Error(listOf(EMAIL_ADDRESS_ERROR))
+        val userSaltValue = collection.findOne(Filters.eq(UserEntity::email.name, req.email))?.salt ?: return Resource.Error(listOf(EMAIL_ADDRESS_ERROR))
         val encryptedPassword = passwordEncryption.encodeWithSalt(userSaltValue, req.password)
         val canUserLogin = collection.find(Filters.and(UserEntity::email eq req.email, UserEntity::password eq encryptedPassword)).singleOrNull() ?: return Resource.Error(listOf(PASSWORD_ERROR))
 

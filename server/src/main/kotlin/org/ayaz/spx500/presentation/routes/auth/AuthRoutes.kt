@@ -15,7 +15,9 @@ import org.ayaz.spx500.domain.mapper.login.LoginResMapper
 import org.ayaz.spx500.domain.models.user.UserModel
 import org.ayaz.spx500.domain.use_cases.auth.LoginUseCase
 import org.ayaz.spx500.domain.use_cases.auth.SignUpUseCase
+import org.ayaz.spx500.domain.use_cases.user.GetUuidUseCase
 import org.ayaz.spx500.domain.util.Resource
+import org.ayaz.spx500.presentation.util.CallUtil.getClaim
 import org.ayaz.spx500.presentation.util.CallUtil.getJWTValues
 import org.ayaz.spx500.presentation.util.CallUtil.require
 import org.koin.ktor.ext.inject
@@ -34,7 +36,7 @@ fun Route.authRoutes() {
                 val jwtValues = call.application.environment.config.getJWTValues()
                 val token = jwtUtil.createToken(jwtValues, reqModel.email, reqModel.password)
 
-                if (tokenSession.addToken(response.item.uuid, token).isNotEmpty()) {
+                if (tokenSession.addToken(response.item.uuid, token) == "OK") {
                     val responseItem = loginResMapper.toModel(response.item).copy(token = token)
                     call.respond(HttpStatusCode.OK, Response.Success(item = responseItem))
                 } else {
@@ -56,7 +58,14 @@ fun Route.authRoutes() {
 
     authenticate {
         get(AuthEndpoints.LOG_OUT) {
-
+            val email = call.getClaim().email
+            val getUuidUseCase by inject<GetUuidUseCase>()
+            val tokenSession by inject<TokenSession>()
+            with(getUuidUseCase(email)) uuid@{
+                if (this@uuid == null) call.respond(HttpStatusCode.BadRequest, Response.Error(errorMessages = listOf("Your session couldn't valid.")))
+                val result = tokenSession.removeToken(this@uuid!!)
+                if (result == 1L) call.respond(HttpStatusCode.OK, Response.Success(item = null)) else call.respond(HttpStatusCode.InternalServerError, Response.Error(errorMessages = listOf("Your session couldn't removed.")))
+            }
         }
     }
 }

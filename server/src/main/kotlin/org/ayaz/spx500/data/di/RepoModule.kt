@@ -6,7 +6,9 @@ import org.ayaz.spx500.data.repositories.auth.ILoginRepo
 import org.ayaz.spx500.data.repositories.auth.ISignUpRepo
 import org.ayaz.spx500.data.repositories.auth.LoginRepo
 import org.ayaz.spx500.data.repositories.auth.SignUpRepo
+import org.ayaz.spx500.data.repositories.user.IUserGetUuidRepo
 import org.ayaz.spx500.data.repositories.user.IUserValidationRepo
+import org.ayaz.spx500.data.repositories.user.UserGetUuidRepo
 import org.ayaz.spx500.data.repositories.user.UserValidationRepo
 import org.ayaz.spx500.domain.di.MapperModule
 import org.ayaz.spx500.domain.di.UtilModule
@@ -35,5 +37,10 @@ class RepoModule {
     fun provideUserValidationRepo(
         userCollection: MongoCollection<UserEntity>
     ) = UserValidationRepo(userCollection)
+
+    @Single([IUserGetUuidRepo::class])
+    fun provideUserGetUuidRepo(
+        userCollection: MongoCollection<UserEntity>
+    ) = UserGetUuidRepo(userCollection)
 
 }
