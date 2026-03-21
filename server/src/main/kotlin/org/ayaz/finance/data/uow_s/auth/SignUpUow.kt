@@ -7,7 +7,7 @@ import org.ayaz.finance.data.entities.user.UserEntity
 import org.ayaz.finance.data.dto_s.auth.SignUpReqDTO
 import org.ayaz.finance.data.util.UserCollection
 import org.ayaz.finance.domain.util.encryption.PasswordEncryption
-import org.ayaz.finance.domain.util.Resource
+import org.ayaz.finance.domain.base.Resource
 
 fun interface ISignUpUow {
     operator fun invoke(req: SignUpReqDTO): Resource<Boolean>

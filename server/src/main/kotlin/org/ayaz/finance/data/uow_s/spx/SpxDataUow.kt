@@ -7,7 +7,7 @@ import com.mongodb.client.model.Projections
 import org.ayaz.finance.data.entities.spx.SPXDetailEntity
 import org.ayaz.finance.data.entities.spx.SPXEntity
 import org.ayaz.finance.data.util.SpxCollection
-import org.ayaz.finance.domain.util.Resource
+import org.ayaz.finance.domain.base.Resource
 
 interface ISpxDataUow {
     fun getData(): Resource<List<SPXEntity>>

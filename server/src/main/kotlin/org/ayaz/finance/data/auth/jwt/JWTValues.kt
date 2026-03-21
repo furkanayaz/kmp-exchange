@@ -1,4 +1,4 @@
-package org.ayaz.finance.data.util.jwt
+package org.ayaz.finance.data.auth.jwt
 
 data class JWTValues(
     val secretKey: String,

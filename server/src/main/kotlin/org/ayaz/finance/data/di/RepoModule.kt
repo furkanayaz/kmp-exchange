@@ -16,7 +16,7 @@ import org.ayaz.finance.data.uow_s.auth.ISignUpUow
 import org.ayaz.finance.data.uow_s.crypto.ICryptoDataUow
 import org.ayaz.finance.data.uow_s.spx.ISpxDataUow
 import org.ayaz.finance.data.uow_s.user.IUserGetUuidUow
-import org.ayaz.finance.data.util.jwt.JWTUtil
+import org.ayaz.finance.data.auth.jwt.JWTUtil
 import org.ayaz.finance.domain.di.MapperModule
 import org.ayaz.finance.domain.mapper.login.LoginResMapper
 import org.ayaz.finance.domain.mapper.spx.SpxDetailResMapper

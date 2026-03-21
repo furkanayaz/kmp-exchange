@@ -9,7 +9,7 @@ import org.ayaz.finance.data.util.UserCollection
 import org.ayaz.finance.domain.mapper.user.UserMapper
 import org.ayaz.finance.domain.models.user.UserModel
 import org.ayaz.finance.domain.util.encryption.PasswordEncryption
-import org.ayaz.finance.domain.util.Resource
+import org.ayaz.finance.domain.base.Resource
 
 fun interface ILoginUow {
     operator fun invoke(req: LoginReqDTO): Resource<UserModel>

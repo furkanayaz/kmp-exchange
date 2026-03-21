@@ -1,4 +1,4 @@
-package org.ayaz.finance.data.util
+package org.ayaz.finance.data.base
 
 import io.ktor.http.HttpStatusCode
 import kotlinx.serialization.Serializable
@@ -17,7 +17,7 @@ sealed interface Response<T: Any> {
         val isSuccess: Boolean = false,
         val code: Int = HttpStatusCode.BadRequest.value,
         val errorMessages: List<String>,
-        private val item: T? = null,
+        private val item: T? = null
     ): Response<T> {
 
         fun getHttpStatusCode(): HttpStatusCode {

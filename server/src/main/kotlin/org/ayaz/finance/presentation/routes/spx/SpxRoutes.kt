@@ -3,7 +3,7 @@ package org.ayaz.finance.presentation.routes.spx
 import io.ktor.server.auth.authenticate
 import io.ktor.server.routing.Route
 import io.ktor.server.routing.get
-import org.ayaz.finance.data.util.Response
+import org.ayaz.finance.data.base.Response
 import org.ayaz.finance.domain.use_cases.spx.GetSpxDataDetailUseCase
 import org.ayaz.finance.domain.use_cases.spx.GetSpxDataUseCase
 import org.ayaz.finance.presentation.util.CallUtil.getPagingInfo

@@ -1,4 +1,4 @@
-package org.ayaz.finance.data.util.jwt
+package org.ayaz.finance.data.auth.jwt
 
 import com.auth0.jwt.JWT
 import com.auth0.jwt.JWTVerifier

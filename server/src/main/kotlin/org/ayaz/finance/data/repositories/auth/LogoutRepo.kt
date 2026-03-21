@@ -2,7 +2,7 @@ package org.ayaz.finance.data.repositories.auth
 
 import org.ayaz.finance.data.sessions.token.TokenSession
 import org.ayaz.finance.data.uow_s.user.IUserGetUuidUow
-import org.ayaz.finance.data.util.Response
+import org.ayaz.finance.data.base.Response
 
 fun interface ILogoutRepo {
     operator fun invoke(email: String?): Response<Boolean>

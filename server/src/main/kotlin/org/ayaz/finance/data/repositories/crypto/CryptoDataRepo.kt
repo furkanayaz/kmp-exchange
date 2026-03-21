@@ -3,8 +3,8 @@ package org.ayaz.finance.data.repositories.crypto
 import org.ayaz.finance.data.dto_s.crypto.CryptoListingsResDTO
 import org.ayaz.finance.data.dto_s.crypto.CryptoMapResDTO
 import org.ayaz.finance.data.uow_s.crypto.ICryptoDataUow
-import org.ayaz.finance.data.util.Response
-import org.ayaz.finance.domain.util.Resource
+import org.ayaz.finance.data.base.Response
+import org.ayaz.finance.domain.base.Resource
 
 interface ICryptoDataRepo {
     suspend fun getData(limit: Int, start: Int): Response<List<CryptoMapResDTO>>

@@ -14,7 +14,7 @@ import jakarta.validation.MessageInterpolator
 import jakarta.validation.Validation
 import jakarta.validation.metadata.ConstraintDescriptor
 import kotlinx.serialization.SerializationException
-import org.ayaz.finance.data.util.Response
+import org.ayaz.finance.data.base.Response
 import org.ayaz.finance.presentation.util.FinanceExceptions
 import java.util.Locale
 

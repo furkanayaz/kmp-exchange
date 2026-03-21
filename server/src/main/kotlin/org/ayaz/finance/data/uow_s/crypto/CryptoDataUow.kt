@@ -8,7 +8,7 @@ import io.ktor.http.headers
 import org.ayaz.finance.data.dto_s.crypto.CryptoListingsResDTO
 import org.ayaz.finance.data.dto_s.crypto.CryptoMapResDTO
 import org.ayaz.finance.data.dto_s.crypto.CryptoResDTO
-import org.ayaz.finance.domain.util.Resource
+import org.ayaz.finance.domain.base.Resource
 
 interface ICryptoDataUow {
     suspend fun getData(limit: Int, start: Int): Resource<List<CryptoMapResDTO>>

@@ -5,10 +5,10 @@ import org.ayaz.finance.data.dto_s.spx.SpxResDTO
 import org.ayaz.finance.data.entities.spx.SPXDetailEntity
 import org.ayaz.finance.data.entities.spx.SPXEntity
 import org.ayaz.finance.data.uow_s.spx.ISpxDataUow
-import org.ayaz.finance.data.util.Response
+import org.ayaz.finance.data.base.Response
 import org.ayaz.finance.domain.mapper.spx.SpxDetailResMapper
 import org.ayaz.finance.domain.mapper.spx.SpxResMapper
-import org.ayaz.finance.domain.util.Resource
+import org.ayaz.finance.domain.base.Resource
 
 interface ISpxDataRepo {
     fun getData(pageNo: Int, pageSize: Int): Response<List<SpxResDTO>>

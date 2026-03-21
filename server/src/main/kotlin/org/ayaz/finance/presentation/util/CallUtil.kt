@@ -10,9 +10,9 @@ import io.ktor.server.plugins.BadRequestException
 import io.ktor.server.request.receiveNullable
 import io.ktor.server.response.respond
 import io.ktor.server.routing.RoutingCall
-import org.ayaz.finance.data.util.Response
-import org.ayaz.finance.data.util.Response.Success
-import org.ayaz.finance.data.util.jwt.JWTValues
+import org.ayaz.finance.data.base.Response
+import org.ayaz.finance.data.base.Response.Success
+import org.ayaz.finance.data.auth.jwt.JWTValues
 import org.ayaz.finance.data.util.server.SPXServer
 import org.ayaz.finance.presentation.util.validations.Validator
 import org.koin.ktor.ext.inject
