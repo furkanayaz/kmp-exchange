@@ -8,12 +8,12 @@ import io.ktor.util.appendAll
 import org.ayaz.finance.data.dto_s.crypto.CryptoListResDTO
 import org.ayaz.finance.data.dto_s.crypto.CryptoQuotesResDTO
 import org.ayaz.finance.data.dto_s.crypto.CryptoMapResDTO
-import org.ayaz.finance.data.dto_s.crypto.CryptoResDTO
+import org.ayaz.finance.data.dto_s.crypto.CryptoFilterResDTO
 import org.ayaz.finance.domain.base.Resource
 
 interface ICryptoDataUow {
     suspend fun getData(limit: Int, start: Int): Resource<List<CryptoMapResDTO>>
-    suspend fun getDetailData(id: Int, convert: String): Resource<CryptoQuotesResDTO>
+    suspend fun getDetailData(id: Int, convert: String): Resource<Map<String, CryptoQuotesResDTO>>
 }
 
 class CryptoDataUow(
@@ -32,11 +32,11 @@ class CryptoDataUow(
         }
     }
 
-    override suspend fun getDetailData(id: Int, convert: String): Resource<CryptoQuotesResDTO> {
+    override suspend fun getDetailData(id: Int, convert: String): Resource<Map<String, CryptoQuotesResDTO>> {
         return try {
             val response = client.get("/v1/cryptocurrency/quotes/latest") {
                 url.parameters.appendAll(mapOf("id" to id.toString(), "convert" to convert))
-            }.body<CryptoResDTO<CryptoQuotesResDTO>>()
+            }.body<CryptoFilterResDTO<CryptoQuotesResDTO>>()
 
             if (response.isSuccess()) Resource.Success(response.data) else Resource.Error(response.status.errorCode, listOf(response.status.getErrorMessage()))
         } catch (e: Exception) {

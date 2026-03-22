@@ -8,7 +8,7 @@ import org.ayaz.finance.domain.base.Resource
 
 interface ICryptoDataRepo {
     suspend fun getData(limit: Int, start: Int): Response<List<CryptoMapResDTO>>
-    suspend fun getDetailData(id: Int, convert: String): Response<CryptoQuotesResDTO>
+    suspend fun getDetailData(id: Int, convert: String): Response<Map<String, CryptoQuotesResDTO>>
 }
 
 class CryptoDataRepo(
@@ -24,10 +24,10 @@ class CryptoDataRepo(
     override suspend fun getDetailData(
         id: Int,
         convert: String
-    ): Response<CryptoQuotesResDTO> {
+    ): Response<Map<String, CryptoQuotesResDTO>> {
         return when(val response = cryptoDataUow.getDetailData(id, convert)) {
-            is Resource.Error<CryptoQuotesResDTO> -> Response.Error(code = response.code, errorMessages = response.messages)
-            is Resource.Success<CryptoQuotesResDTO> -> Response.Success(item = response.item)
+            is Resource.Error<Map<String, CryptoQuotesResDTO>> -> Response.Error(code = response.code, errorMessages = response.messages)
+            is Resource.Success<Map<String, CryptoQuotesResDTO>> -> Response.Success(item = response.item)
         }
     }
 

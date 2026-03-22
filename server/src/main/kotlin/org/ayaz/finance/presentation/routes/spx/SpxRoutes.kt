@@ -3,10 +3,10 @@ package org.ayaz.finance.presentation.routes.spx
 import io.ktor.server.auth.authenticate
 import io.ktor.server.routing.Route
 import io.ktor.server.routing.get
-import org.ayaz.finance.data.base.Response
 import org.ayaz.finance.domain.use_cases.spx.GetSpxDataDetailUseCase
 import org.ayaz.finance.domain.use_cases.spx.GetSpxDataUseCase
 import org.ayaz.finance.presentation.util.CallUtil.getPagingInfo
+import org.ayaz.finance.presentation.util.CallUtil.sendErrorMessage
 import org.ayaz.finance.presentation.util.CallUtil.sendResponse
 import org.koin.ktor.ext.inject
 
@@ -21,7 +21,7 @@ fun Route.spxRoutes() {
 
         get(SpxEndpoints.GET_DATA_DETAIL) {
             val symbol = call.parameters["symbol"]
-            if (symbol == null) call.sendResponse(Response.Error(errorMessages = listOf("spx.data.detail.symbol.required")))
+            if (symbol == null) call.sendErrorMessage("fields.required", "symbol")
 
             val getSpxDataDetailUseCase by inject<GetSpxDataDetailUseCase>()
             call.sendResponse(getSpxDataDetailUseCase(symbol!!))

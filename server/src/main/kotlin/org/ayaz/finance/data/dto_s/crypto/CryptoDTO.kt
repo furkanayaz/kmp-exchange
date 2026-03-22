@@ -12,8 +12,8 @@ data class CryptoListResDTO<T: Any>(
 }
 
 @Serializable
-data class CryptoResDTO<T: Any>(
-    val data: T,
+data class CryptoFilterResDTO<T: Any>(
+    val data: Map<String, T>,
     val status: CryptoResStatusDTO
 ) {
     fun isSuccess() = status.errorCode == 0
@@ -43,9 +43,7 @@ data class CryptoQuotesResDTO(
     @SerialName("max_supply") val maxSupply: Double?,
     @SerialName("date_added") val addedDate: String?,
     @SerialName("last_updated") val lastUpdate: String?,
-    val usd: QuoteResDTO? = null,
-    @SerialName("TRY") val trY: QuoteResDTO? = null,
-    val tags: List<String>?
+    val quote: Map<String, QuoteResDTO>?
 )
 
 @Serializable
