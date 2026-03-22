@@ -2,8 +2,8 @@ package org.ayaz.finance.data.repositories.auth
 
 import org.ayaz.finance.data.dto_s.auth.SignUpReqDTO
 import org.ayaz.finance.data.uow_s.auth.ISignUpUow
-import org.ayaz.finance.data.util.Response
-import org.ayaz.finance.domain.util.Resource
+import org.ayaz.finance.data.base.Response
+import org.ayaz.finance.domain.base.Resource
 
 fun interface ISignUpRepo {
     operator fun invoke(req: SignUpReqDTO): Response<Boolean>
