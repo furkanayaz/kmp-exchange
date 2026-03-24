@@ -23,13 +23,12 @@ fun Route.cryptoRoutes() {
 
         get(CryptoEndpoints.GET_DATA_DETAIL) {
             val id = call.request.queryParameters["id"]?.toIntOrNull()
-            val convert = call.request.queryParameters["currency"]
+            val convert = call.request.queryParameters["currency"] ?: "USD"
 
             if (id == null) call.sendErrorMessage("fields.required", "id")
-            if (convert == null) call.sendErrorMessage("fields.required", "currency")
 
             val crpytoDataDetailUseCase by inject<CryptoDataDetailUseCase>()
-            call.sendResponse(crpytoDataDetailUseCase(id!!, convert!!))
+            call.sendResponse(crpytoDataDetailUseCase(id!!, convert))
         }.setGetDataDetailDoc()
     }
 }

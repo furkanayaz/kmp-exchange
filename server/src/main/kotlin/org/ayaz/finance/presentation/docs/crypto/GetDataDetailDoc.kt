@@ -17,8 +17,13 @@ fun Route.setGetDataDetailDoc() {
 
         parameters {
             query("id") {
-                description = "Required to retrieve crypto detail. Examples: 1 (BTC), 2 (ETH), 3 (USD) etc..."
+                description = "Required to retrieve crypto detail. Examples: 1 (Bitcoin), 2 (Litecoin), 3 (Namecoin) etc..."
                 required = true
+            }
+
+            query("currency") {
+                description = "Required to retrieve the latest quote price data (1H, 24H, 7D, etc.) default is USD."
+                required = false
             }
         }
 
